@@ -1,0 +1,25 @@
+{
+  "name": "nej-learning",
+  "description": "learning NEJ",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": "csyuwang",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csyuwang/nej-learning.git"
+  },
+
+  "scripts": {
+    "examples": "node server.js"
+  },
+
+  "devDependencies": {
+    "express": "^4.13.4",
+    "express-urlrewrite": "^1.2.0"
+  },
+
+  "keywords": [
+    "nej",
+    "nej-learning"
+  ]
+}

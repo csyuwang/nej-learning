@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+  <title>Test Define</title>
+  <link href="/global.css" rel="stylesheet"/>
+</head>
+<body>
+  <h1 class="breadcrumbs"><a href="/">NEJ Examples</a> / Dependency</h1>
+  <div id="example"></div>
+  <script src="/src/define.js?pro=./&common=./lib/"></script>
+  <script>
+    NEJ.define([
+        'pro/lib/a',
+        '{pro}/lib/b.js',
+        'common/c',
+    ],function(a,b){
+      console.log('app')
+      var s = a.api() + '_' + b.api();
+      document.getElementById('example').innerHTML = s;
+
+    });
+  </script>
+</body>
+</html>
