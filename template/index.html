@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+  <title>Test Template</title>
+  <link href="/global.css" rel="stylesheet"/>
+</head>
+<body>
+  <h1 class="breadcrumbs"><a href="/">NEJ Examples</a> / Template</h1>
+  <div id="example"></div>
+  <script src="/src/define.js?pro=./"></script>
+  <script>
+      NEJ.define([
+          'util/template/jst',
+          'util/template/tpl',
+          'text!{pro}/basic/jst.tpl',
+          'text!{pro}/basic/ntp.tpl',
+          'text!{pro}/basic/txt.tpl'
+      ],function(jst, tpl, j, n, t){
+          //jst
+          var sn = jst._$add(j);
+          console.log(sn);
+          var html = jst._$get(sn,{
+            workers:[
+              {name:'abc',gender:1},
+              {name:'def',gender:1},
+              {name:'ghi'}
+            ]
+          });
+          console.log(html);
+          document.getElementById('example').innerHTML = html;
+          //ntp
+          var sn = tpl._$addNodeTemplate(n);
+          var node = tpl._$getNodeTemplate(sn);
+          console.log(node);
+          document.body.appendChild(node);
+          //txt
+          tpl._$addTextTemplate('tk', t);
+          var txt = tpl._$getTextTemplate('tk');
+          console.log(txt);
+      });
+  </script>
+
+</body>
+</html>
