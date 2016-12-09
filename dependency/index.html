@@ -6,12 +6,14 @@
 <body>
   <h1 class="breadcrumbs"><a href="/">NEJ Examples</a> / Dependency</h1>
   <div id="example"></div>
+  <p class="foo">foo</p>
+  <p class="bar">bar</p>
   <script src="/src/define.js?pro=./&common=./lib/"></script>
   <script>
     NEJ.define([
         'pro/lib/a',
         '{pro}/lib/b.js',
-        'common/c',
+        'common/c'
     ],function(a,b){
       console.log('app')
       var s = a.api() + '_' + b.api();
@@ -19,5 +21,20 @@
 
     });
   </script>
+
+
+  <script>
+    NEJ.define([
+        'css!{pro}/app.css', //inject css
+        'json!{pro}/app.json',
+        '{pro}/app.js'
+    ],function(c, j, m){
+      console.log(c);
+      console.log(j);
+      console.log(j.foo);
+      console.log(m);
+    });
+  </script>
+
 </body>
 </html>
