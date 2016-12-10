@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+  <title>Test Widget</title>
+  <link href="/global.css" rel="stylesheet"/>
+</head>
+<body>
+  <h1 class="breadcrumbs"><a href="/">NEJ Examples</a> / Widget</h1>
+  <div id="example"></div>
+  <script src="/src/define.js?pro=./"></script>
+  <script>
+    NEJ.define([
+      'util/template/tpl',
+      '{pro}/comment/comment.js'
+    ],function(_t,_i){
+      var _data = [
+        {face:'img/a.jpg', username:'jack', content: 'a', replies:[{face:'img/b.jpg', username:'bob', content: '哈哈哈'}]},
+        {face:'img/b.jpg', username:'bob', content: 'b'},
+        {face:'img/c.gif', username:'mike', content: 'c'}
+      ]
+      // TODO
+      var _list = _t._$getItemTemplate(
+        _data,_i._$$CommentItem,{
+          parent:'example'
+        }
+      );
+    });
+  </script>
+
+</body>
+</html>
