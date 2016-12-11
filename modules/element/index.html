@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+  <title>Test Element Module</title>
+  <link href="/global.css" rel="stylesheet"/>
+</head>
+<body>
+  <h1 class="breadcrumbs"><a href="/">NEJ Examples</a> / Element Module</h1>
+  <div id="example">Check the Console</div>
+  <script src="/src/define.js?pro=./"></script>
+  <script>
+    NEJ.define([
+      'base/element'
+    ],function(_e){
+      // create element and get by id
+      var _div = _e._$create('div', 'a', 'example');
+      _div.innerHTML = '<p id="a">aaaa</p>';
+      _e._$removeByEC(_div);
+      console.log(_e._$get(_e._$id(_div)));
+      console.log(_e._$getByClassName(_e._$get('example'),'a'));
+
+      console.log(_e._$get('a'));
+      // get element after set element id in memory
+      var _div = document.createElement('div');
+      var _id = _e._$id(_div);
+      console.log(_id);
+      console.log(_e._$get(_id));
+      // parse element
+      console.log(_e._$html2node('<TR><td>col1</td><td>col2</td></TR>'));
+    });
+  </script>
+
+</body>
+</html>

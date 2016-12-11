@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+  <title>Test Event Module</title>
+  <link href="/global.css" rel="stylesheet"/>
+</head>
+<body>
+  <h1 class="breadcrumbs"><a href="/">NEJ Examples</a> / Event Module</h1>
+  <div id="example">
+    <textarea id="abcd"></textarea>
+  </div>
+  <br />
+  <input type="button" value="add" id="btn-add"/>
+  <input type="button" value="del" id="btn-del"/>
+  <script src="/src/define.js?pro=./"></script>
+  <script>
+    NEJ.define([
+        'base/event',
+        'base/element'
+    ],function(_v,_e){
+        var tx = _e._$get('abcd');
+        var handler = function(){
+            console.log('input ->'+tx.value);
+        }
+        _v._$addEvent(tx,'input',handler);
+        _v._$addEvent('btn-add','click',function(_event){
+            console.log(_v._$getElement(_event).value);
+            _e._$get('example').appendChild(tx);
+            _v._$addEvent(tx,'input',handler);
+        });
+        _v._$addEvent('btn-del','click',function(){
+            _v._$delEvent(tx,'input',handler);
+            _e._$removeByEC(tx);
+            tx.value = '';
+        });
+    });
+  </script>
+
+</body>
+</html>
