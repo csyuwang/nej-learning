@@ -8,7 +8,7 @@
     {list workers as x}
       <tr{if x_index==x_length-1} class="last"{/if}>
         <td>${x_index+1}</td>
-        <td>${x.name}</td>
+        <td>${x.name|default:'Unknown'|prefix:x_index}</td>
         <td>{if x.gender==1}男{else}女{/if}</td>
       </tr>
     {/list}

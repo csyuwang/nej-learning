@@ -16,17 +16,34 @@
           'text!{pro}/basic/txt.tpl'
       ],function(jst, tpl, j, n, t){
           //jst
+          // 注册扩展方法 prefix
+         jst._$extend({
+             prefix:function(data,index){
+               return 'worker' + (index+1) + '-' + data;
+             }
+         });
           var sn = jst._$add(j);
           console.log(sn);
           var html = jst._$get(sn,{
             workers:[
               {name:'abc',gender:1},
               {name:'def',gender:1},
-              {name:'ghi'}
+              {name:'ghi'},
+              {name:null,gender:0}
             ]
           });
           console.log(html);
-          document.getElementById('example').innerHTML = html;
+          // 模板整合数据
+          jst._$render(
+              'example',sn,{
+                workers:[
+                  {name:'abc',gender:1},
+                  {name:'def',gender:1},
+                  {name:'ghi'},
+                  {gender:0}
+                ]
+              }
+          );
           //ntp
           var sn = tpl._$addNodeTemplate(n);
           var node = tpl._$getNodeTemplate(sn);
